@@ -6,7 +6,6 @@ import (
 	"context"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/joho/godotenv"
 )
 
@@ -19,7 +18,6 @@ func main() {
 	defer initializers.Client.Disconnect(context.TODO())
 
 	app := fiber.New()
-	app.Use(cors.New())
 	app.Use("/user", controllers.AuthenticationMiddleware)
 	app.Use("/todo", controllers.AuthenticationMiddleware)
 
